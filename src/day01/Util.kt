@@ -3,11 +3,7 @@ package day01
 fun biggerThanPreviousCount(list: List<Int>): Int {
     var count = 0
     list.forEachIndexed { index, item ->
-        if (index != 0) {
-            if (item > list[index - 1]) {
-                count += 1
-            }
-        }
+        if (index != 0 && item > list[index - 1]) count += 1
     }
     return count
 }
