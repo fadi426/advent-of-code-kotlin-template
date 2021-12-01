@@ -22,7 +22,7 @@ Right after the [@actions-user][actions-user] actor pushes the second commit to 
 From now, everything's in your hands!
 Join the [Advent of Code][aoc] contest, solve the Day O1 as soon as it is published.
 
-For the following days, copy the `Day01.kt` solution file and increment the day number.
+For the following days, copy the `day01.kt` solution file and increment the day number.
 
 > Remember to join the Kotlin contest!
 > 
@@ -45,13 +45,13 @@ After you create a new project based on the current template repository using th
 ├── gradlew.bat             Windows Gradle Wrapper script
 ├── settings.gradle.kts     Gradle project settings
 └── src
-    ├── Day01.kt            An empty implementation for the first AoC day
-    ├── Day01.txt           An empty file for the Day 01 input data
+    ├── day01.kt            An empty implementation for the first AoC day
+    ├── day01.txt           An empty file for the Day 01 input data
     ├── Day01_test.txt      An optional Day 01 test input data used for checks
     └── Utils.kt            A set of utility methods shared across your days
 ```
 
-When the first puzzle appears, go to the `Day01.kt` and for each `part1` and `part2` functions, provide an algorithm implementation using the `input` data loaded from the `src/Day01.txt` file.
+When the first puzzle appears, go to the `day01.kt` and for each `part1` and `part2` functions, provide an algorithm implementation using the `input` data loaded from the `src/day01.txt` file.
 This input data is common for both parts, and you can find it on the bottom of each day on the [Advent of Code][aoc] page.
 
 To read the input data, you can go with the `readInput(name: String)` utility method provided in the [`Utils.kt`][file:utils] file, like:
@@ -62,7 +62,7 @@ fun main() {
         return input.size
     }
 
-    val input = readInput("Day01")
+    val input = readInput("day01")
     println(part1(input))
 }
 ```
