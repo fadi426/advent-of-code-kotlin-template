@@ -7,3 +7,8 @@ fun List<Int>.itemsBiggerThanPrevious(): Int {
     }
     return count
 }
+
+fun assertTrue(bool: Boolean) {
+    if (!bool)
+        throw Exception("Objects don't match!")
+}
