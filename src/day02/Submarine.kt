@@ -17,11 +17,11 @@ interface Submarine {
         }
     }
 
-    fun forward(movement: Int) {}
+    fun forward(movement: Int)
 
-    fun up(movement: Int) {}
+    fun up(movement: Int)
 
-    fun down(movement: Int) {}
+    fun down(movement: Int)
 
     fun result(): Int {
         return x * y
