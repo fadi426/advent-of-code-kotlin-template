@@ -5,7 +5,6 @@ fun main() {
     fun task01(list : List<Int>): Int {
         return list.itemsBiggerThanPrevious()
     }
-
     fun task02(list : List<Int>): Int {
         return list.toList().windowed(3).map { it.sum() }.itemsBiggerThanPrevious()
     }

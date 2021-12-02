@@ -1,6 +1,6 @@
 package day01.day02
 
-class SubmarineTask01(override var x: Int, override var y: Int, override var z: Int) : Submarine {
+class SubmarineTask01(override var x: Int, override var y: Int, override var aim: Int) : Submarine {
     override fun forward(movement: Int) {
         x += movement
     }

@@ -3,7 +3,7 @@ package day01.day02
 interface Submarine {
     var x: Int
     var y: Int
-    var z: Int
+    var aim: Int
 
     fun move(commands: List<String>) {
         commands.forEach { command ->
