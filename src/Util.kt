@@ -1,5 +1,7 @@
 package day01
 
+import java.io.File
+
 fun List<Int>.itemsBiggerThanPrevious(): Int {
     var count = 0
     this.forEachIndexed { index, item ->
@@ -12,3 +14,6 @@ fun assertTrue(bool: Boolean) {
     if (!bool)
         throw Exception("Objects don't match!")
 }
+ fun readDayInput(day: String): List<String> {
+     return File("src/$day/$day.txt").readLines()
+ }

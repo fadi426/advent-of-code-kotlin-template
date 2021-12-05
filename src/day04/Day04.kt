@@ -1,10 +1,10 @@
 package day01.day04
 
 import day01.assertTrue
-import java.io.File
+import day01.readDayInput
 
 fun main() {
-    val input = File("src/day04/Day04.txt").readLines()
+    val input = readDayInput("Day04")
     fun task01() = calculateScores(input).first().first
     fun task02() = calculateScores(input).last().first
     assertTrue(task01() == 63424)

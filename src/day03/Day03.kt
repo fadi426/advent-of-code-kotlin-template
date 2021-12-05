@@ -1,7 +1,7 @@
 package day01.day03
 
 import day01.assertTrue
-import java.io.File
+import day01.readDayInput
 
 fun main() {
 
@@ -23,7 +23,7 @@ fun main() {
         return Integer.parseInt(oxGenRating.first(), 2) * Integer.parseInt(co2ScrubRating.first(), 2)
     }
 
-    val input = File("src/day03/Day03.txt").readLines()
+    val input = readDayInput("Day03")
     assertTrue(task01(input) == 1458194)
     assertTrue(task02(input) == 2829354)
 }

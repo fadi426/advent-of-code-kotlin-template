@@ -3,7 +3,7 @@ package day02
 import day01.assertTrue
 import day01.day02.SubmarineTask01
 import day01.day02.SubmarineTask02
-import java.io.File
+import day01.readDayInput
 
 fun main() {
     fun task01(commands: List<String>): Int {
@@ -18,7 +18,7 @@ fun main() {
         return submarine.result()
     }
 
-    val input = File("src/day02/Day02.txt").readLines()
+    val input = readDayInput("Day02")
     assertTrue(task01(input) == 1924923)
     assertTrue(task02(input) == 1982495697)
 }
