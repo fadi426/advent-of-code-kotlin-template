@@ -22,7 +22,7 @@ interface Field {
         return Pair(x, y)
     }
 
-    fun analyseCoordinates() {
+    fun fillCoordinates() {
         coordinates.forEach { points ->
             fillHorizontalAndVertical(points)
         }

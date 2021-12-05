@@ -12,7 +12,7 @@ class FieldTask02(
         createMap()
     }
 
-    override fun analyseCoordinates() {
+    override fun fillCoordinates() {
         coordinates.forEach { points ->
             fillHorizontalAndVertical(points)
             fillDiagonal(points)
