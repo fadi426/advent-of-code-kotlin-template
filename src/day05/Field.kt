@@ -8,15 +8,15 @@ interface Field {
     var hydrothermalVentsMap: MutableList<MutableList<Int>>
 
     fun createMap() {
-        for (i in 0..determineDimensions().first!!) {
+        for (i in 0..determineMapDimensions().first!!) {
             hydrothermalVentsMap.add(mutableListOf())
-            for (j in 0..determineDimensions().second!!) {
+            for (j in 0..determineMapDimensions().second!!) {
                 hydrothermalVentsMap[i].add(0)
             }
         }
     }
 
-    private fun determineDimensions(): Pair<Int?, Int?> {
+    private fun determineMapDimensions(): Pair<Int?, Int?> {
         val x = coordinates.map { it.let { listOf(it.first.x, it.second.x) } }.flatten().maxOrNull()
         val y = coordinates.map { it.let { listOf(it.first.y, it.second.y) } }.flatten().maxOrNull()
         return Pair(x, y)
