@@ -35,13 +35,13 @@ interface Field {
     fun fillHorizontalAndVertical(points: Pair<Point, Point>) {
         if (points.first.x != points.second.x && points.first.y != points.second.y) return
         val pointDifference = Pair(points.second.x - points.first.x, points.second.y - points.first.y)
-        if (pointDifference.first != 0) {
+        if (pointDifference.first != 0) { // horizontal
             for (i in 0..pointDifference.first.absoluteValue) {
                 if (pointDifference.first > 0) hydrothermalVentsMap[points.first.y][points.first.x + i]++
                 else hydrothermalVentsMap[points.first.y][points.first.x - i]++
             }
         }
-        if (pointDifference.second != 0) {
+        if (pointDifference.second != 0) { // vertical
             for (i in 0..pointDifference.second.absoluteValue) {
                 if (pointDifference.second > 0) hydrothermalVentsMap[points.first.y + i][points.first.x]++
                 else hydrothermalVentsMap[points.first.y - i][points.first.x]++
