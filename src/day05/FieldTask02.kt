@@ -10,6 +10,7 @@ class FieldTask02(
 
     init {
         createMap()
+        fillCoordinates()
     }
 
     override fun fillCoordinates() {
@@ -23,13 +24,9 @@ class FieldTask02(
         val pointDifference = points.second.x - points.first.x to points.second.y - points.first.y
         if (pointDifference.first.absoluteValue != pointDifference.second.absoluteValue) return
         for (i in 0..pointDifference.first.absoluteValue) {
-            if (pointDifference.first > 0) {
-                if (pointDifference.second > 0) hydrothermalVentsMap[points.first.y + i][points.first.x + i]++
-                if (pointDifference.second < 0) hydrothermalVentsMap[points.first.y - i][points.first.x + i]++
-            } else {
-                if (pointDifference.second > 0) hydrothermalVentsMap[points.first.y + i][points.first.x - i]++
-                if (pointDifference.second < 0) hydrothermalVentsMap[points.first.y - i][points.first.x - i]++
-            }
+            val x = if (pointDifference.first > 0) i + points.first.x else -i + points.first.x
+            val y = if (pointDifference.second > 0) i + points.first.y else -i + points.first.y
+            hydrothermalVentsMap[y][x]++
         }
     }
 }

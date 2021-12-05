@@ -7,13 +7,11 @@ import java.awt.Point
 fun main() {
     fun task01(coordinates: List<Pair<Point, Point>>): Int {
         val field = FieldTask01(coordinates)
-        field.fillCoordinates()
         return field.countOverlappingLines()
     }
 
     fun task02(coordinates: List<Pair<Point, Point>>): Int {
         val field = FieldTask02(coordinates)
-        field.fillCoordinates()
         return field.countOverlappingLines()
     }
 

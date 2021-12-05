@@ -8,24 +8,18 @@ interface Field {
     var hydrothermalVentsMap: MutableList<MutableList<Int>>
 
     fun createMap() {
-        for (i in 0..determineMapDimensions().first!!) {
-            hydrothermalVentsMap.add(mutableListOf())
-            for (j in 0..determineMapDimensions().second!!) {
-                hydrothermalVentsMap[i].add(0)
-            }
-        }
+        hydrothermalVentsMap =
+            MutableList(determineMapDimensions().first) { MutableList(determineMapDimensions().second) { 0 } }
     }
 
-    private fun determineMapDimensions(): Pair<Int?, Int?> {
-        val x = coordinates.map { it.let { listOf(it.first.x, it.second.x) } }.flatten().maxOrNull()
-        val y = coordinates.map { it.let { listOf(it.first.y, it.second.y) } }.flatten().maxOrNull()
-        return Pair(x, y)
+    private fun determineMapDimensions(): Pair<Int, Int> {
+        val x = coordinates.map { it.let { listOf(it.first.x, it.second.x) } }.flatten().maxOrNull()!!
+        val y = coordinates.map { it.let { listOf(it.first.y, it.second.y) } }.flatten().maxOrNull()!!
+        return Pair(x + 1, y + 1)
     }
 
     fun fillCoordinates() {
-        coordinates.forEach { points ->
-            fillHorizontalAndVertical(points)
-        }
+        coordinates.forEach { points -> fillHorizontalAndVertical(points) }
     }
 
     fun countOverlappingLines(): Int {
@@ -37,14 +31,14 @@ interface Field {
         val pointDifference = Pair(points.second.x - points.first.x, points.second.y - points.first.y)
         if (pointDifference.first != 0) { // horizontal
             for (i in 0..pointDifference.first.absoluteValue) {
-                if (pointDifference.first > 0) hydrothermalVentsMap[points.first.y][points.first.x + i]++
-                else hydrothermalVentsMap[points.first.y][points.first.x - i]++
+                val x = if (pointDifference.first > 0) i + points.first.x else -i + points.first.x
+                hydrothermalVentsMap[points.first.y][x]++
             }
         }
-        if (pointDifference.second != 0) { // vertical
+        else { // vertical
             for (i in 0..pointDifference.second.absoluteValue) {
-                if (pointDifference.second > 0) hydrothermalVentsMap[points.first.y + i][points.first.x]++
-                else hydrothermalVentsMap[points.first.y - i][points.first.x]++
+                val y = if (pointDifference.second > 0) i + points.first.y else -i + points.first.y
+                hydrothermalVentsMap[y][points.first.x]++
             }
         }
     }

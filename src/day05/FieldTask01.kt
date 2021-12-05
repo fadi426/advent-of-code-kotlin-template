@@ -9,5 +9,6 @@ class FieldTask01(
 
     init {
         createMap()
+        fillCoordinates()
     }
 }
