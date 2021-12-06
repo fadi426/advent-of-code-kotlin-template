@@ -1,26 +1,32 @@
 package day01.day06
 
+import day01.assertTrue
 import day01.readDayInput
 
-fun main() {
 
-    fun task01(input: List<Int>, days: Int): Int {
-        var aList = input.toMutableList()
-        for (i in 0 until days) {
-            val bList = mutableListOf<Int>()
-            for (j in 0 until aList.size) {
-                val fishCounter = aList[j]
-                if (fishCounter != 0) bList.add(fishCounter -1)
-                else {
-                    bList.add(6)
-                    bList.add(8)
-                }
-            }
-            aList = bList
+fun main() {
+    fun calcLanternFishDensity(input: List<Int>, days: Int): Long {
+        val countList = (0..9).map { n -> input.count { n == it } }.map { it.toLong() }.toMutableList()
+
+        for (i in 1..days) {
+            val firstFish: Long = countList[0]
+            countList[0] = countList[1]
+            countList[1] = countList[2]
+            countList[2] = countList[3]
+            countList[3] = countList[4]
+            countList[4] = countList[5]
+            countList[5] = countList[6]
+            countList[6] = countList[7] + firstFish
+            countList[7] = countList[8]
+            countList[8] = firstFish
         }
-        return aList.size
+        return countList.sum()
     }
 
     val input = readDayInput("Day06").first().split(",").map { it.toInt() }
-    println(task01(input, 80))
+    fun task01() = calcLanternFishDensity(input, 80)
+    fun task02() = calcLanternFishDensity(input, 256)
+
+    assertTrue(task01().toInt() == 360761)
+    assertTrue(task02() == 1632779838045)
 }
