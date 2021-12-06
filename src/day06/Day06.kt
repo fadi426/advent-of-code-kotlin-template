@@ -6,22 +6,22 @@ import day01.readDayInput
 
 fun main() {
     fun calcLanternFishDensity(input: List<Int>, days: Int): Long {
-        var countList = (0..9).map { n -> input.count { n == it } }.map { it.toLong() }.toMutableList()
+        var fishDensityList = (0..9).map { n -> input.count { n == it } }.map { it.toLong() }.toMutableList()
 
         for (i in 1..days) {
-            countList = mutableListOf(
-                countList[1],
-                countList[2],
-                countList[3],
-                countList[4],
-                countList[5],
-                countList[6],
-                countList[7] + countList[0],
-                countList[8],
-                countList[0]
+            fishDensityList = mutableListOf(
+                fishDensityList[1],
+                fishDensityList[2],
+                fishDensityList[3],
+                fishDensityList[4],
+                fishDensityList[5],
+                fishDensityList[6],
+                fishDensityList[7] + fishDensityList[0],
+                fishDensityList[8],
+                fishDensityList[0]
             )
         }
-        return countList.sum()
+        return fishDensityList.sum()
     }
 
     val input = readDayInput("Day06").first().split(",").map { it.toInt() }
