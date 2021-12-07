@@ -6,7 +6,7 @@ import day01.readDayInput
 
 fun main() {
     fun calcLanternFishDensity(input: List<Int>, days: Int): Long {
-        var fishDensityList = (0..9).map { n -> input.count { n == it } }.map { it.toLong() }.toMutableList()
+        var fishDensityList = (0..9).map { n -> input.count { n == it } }.map { it.toLong() }
 
         for (i in 1..days) {
             fishDensityList = mutableListOf(
