@@ -10,6 +10,15 @@ fun List<Int>.itemsBiggerThanPrevious(): Int {
     return count
 }
 
+inline fun <T> Iterable<T>.multiplyOf(selector: (T) -> Int): Int {
+    val list = this.toList()
+    var sum = selector(list.first())
+    for (i in 1 until list.size) {
+        sum *= selector(list[i])
+    }
+    return sum
+}
+
 fun assertTrue(bool: Boolean) {
     if (!bool)
         throw Exception("Objects don't match!")
