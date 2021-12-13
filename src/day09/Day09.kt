@@ -1,7 +1,6 @@
 package day01.day09
 
 import day01.assertTrue
-import day01.multiplyOf
 import day01.readDayInput
 import java.awt.Point
 
@@ -33,7 +32,7 @@ fun main() {
         lowPoints.forEachIndexed { index, lowPoint ->
             markBasins(lowPoint.second, lowPoint.first - 1, basinCounts[index])
         }
-        return basinCounts.map { it.i }.sorted().takeLast(3).multiplyOf { it }
+        return basinCounts.map { it.i }.sorted().takeLast(3).reduce {acc, basinSize -> acc * basinSize}
     }
 
     val input = readDayInput("Day09").map { it.map { "$it".toInt() } }
