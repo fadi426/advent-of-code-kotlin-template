@@ -1,7 +1,8 @@
 package day01.day12
 
-import day01.assertTrue
-import day01.readDayInput
+import Counter
+import assertTrue
+import readDayInput
 
 fun main() {
 
@@ -57,8 +58,6 @@ fun createCaves(input: List<String>): List<Cave> {
     }
     return caves
 }
-
-data class Counter(var i: Int = 0)
 
 data class Cave(val name: String) {
     val nearbyCaves = mutableListOf<Cave>()

@@ -1,7 +1,7 @@
 package day01.day08
 
-import day01.assertTrue
-import day01.readDayInput
+import assertTrue
+import readDayInput
 
 fun main() {
 

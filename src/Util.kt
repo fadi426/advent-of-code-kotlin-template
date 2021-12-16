@@ -1,5 +1,3 @@
-package day01
-
 import java.io.File
 
 fun List<Int>.itemsBiggerThanPrevious(): Int {
@@ -17,3 +15,5 @@ fun assertTrue(bool: Boolean) {
  fun readDayInput(day: String): List<String> {
      return File("src/$day/$day.txt").readLines()
  }
+
+data class Counter(var i: Int = 0)

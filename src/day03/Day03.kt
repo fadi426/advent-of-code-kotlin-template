@@ -1,12 +1,13 @@
 package day01.day03
 
-import day01.assertTrue
-import day01.readDayInput
+import assertTrue
+import readDayInput
 
 fun main() {
 
     fun task01(positions: List<String>): Int {
-        var gamma = ""; var epsilon = ""
+        var gamma = ""
+        var epsilon = ""
         positions[0].forEachIndexed { row, _ ->
             gamma = gamma.plus(findMostOccurringBitInRow(positions, row))
             epsilon = epsilon.plus(findLeastOccurringBitInRow(positions, row))
@@ -15,7 +16,8 @@ fun main() {
     }
 
     fun task02(positions: List<String>): Int {
-        var oxGenRating = positions ; var co2ScrubRating = positions
+        var oxGenRating = positions
+        var co2ScrubRating = positions
         positions[0].forEachIndexed { row, _ ->
             oxGenRating = oxGenRating.filter { it[row] == findMostOccurringBitInRow(oxGenRating, row) }
             co2ScrubRating = co2ScrubRating.filter { it[row] == findLeastOccurringBitInRow(co2ScrubRating, row) }

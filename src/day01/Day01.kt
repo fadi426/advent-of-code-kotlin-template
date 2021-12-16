@@ -1,5 +1,9 @@
 package day01
 
+import assertTrue
+import itemsBiggerThanPrevious
+import readDayInput
+
 fun main() {
     fun task01(list : List<Int>): Int {
         return list.itemsBiggerThanPrevious()

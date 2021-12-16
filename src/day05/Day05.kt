@@ -1,8 +1,8 @@
 package day01.day05
 
-import day01.assertTrue
-import day01.readDayInput
+import assertTrue
 import java.awt.Point
+import readDayInput
 
 fun main() {
     fun task01(coordinates: List<Pair<Point, Point>>): Int {

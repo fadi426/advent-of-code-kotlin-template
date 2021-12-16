@@ -1,7 +1,7 @@
 package day01.day04
 
-import day01.assertTrue
-import day01.readDayInput
+import assertTrue
+import readDayInput
 
 fun main() {
     val input = readDayInput("Day04")
@@ -32,7 +32,7 @@ fun calculateScores(input: List<String>): MutableList<Pair<Int, Int>> {
 }
 
 fun checkBingo(bingoBoard: MutableList<MutableList<String>>, numbersDrawn: List<String>): Boolean {
-    bingoBoard.forEachIndexed {i, column ->
+    bingoBoard.forEachIndexed { i, column ->
         if (numbersDrawn.containsAll(column)) return true  // horizontal
         if (numbersDrawn.containsAll(column.mapIndexed { l, _ -> bingoBoard[l][i] })) return true // vertical
     }

@@ -1,7 +1,7 @@
 package day01.day10
 
-import day01.assertTrue
-import day01.readDayInput
+import assertTrue
+import readDayInput
 
 fun main() {
     fun task1(input: List<String>, chunks: List<Pair<Char, Char>>): Int {

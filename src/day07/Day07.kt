@@ -1,7 +1,7 @@
 package day01.day07
 
-import day01.assertTrue
-import day01.readDayInput
+import assertTrue
+import readDayInput
 import kotlin.math.absoluteValue
 
 fun main() {
@@ -20,7 +20,7 @@ fun main() {
         var cheapestOutcome = Int.MAX_VALUE
         for (i in 0..input.maxOrNull()!!) {
             var maxValue = 0
-            for (j in input.indices) maxValue += (input[j] - i).absoluteValue * ((input[j] - i).absoluteValue+1)/2
+            for (j in input.indices) maxValue += (input[j] - i).absoluteValue * ((input[j] - i).absoluteValue + 1) / 2
             if (maxValue < cheapestOutcome) cheapestOutcome = maxValue.absoluteValue
         }
         return cheapestOutcome

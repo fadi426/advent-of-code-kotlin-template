@@ -1,7 +1,7 @@
 package day01.day11
 
-import day01.assertTrue
-import day01.readDayInput
+import assertTrue
+import readDayInput
 
 fun main() {
 
@@ -18,7 +18,7 @@ fun main() {
         var step = 1
         while (true) {
             cavern.nextStep()
-            if (!cavern.getOctopuses().any {!it.flashedLastStep()}) return (step)
+            if (!cavern.getOctopuses().any { !it.flashedLastStep() }) return (step)
             step++
         }
     }

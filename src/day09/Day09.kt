@@ -1,8 +1,9 @@
 package day01.day09
 
-import day01.assertTrue
-import day01.readDayInput
+import Counter
+import assertTrue
 import java.awt.Point
+import readDayInput
 
 fun main() {
 
@@ -32,7 +33,7 @@ fun main() {
         lowPoints.forEachIndexed { index, lowPoint ->
             markBasins(lowPoint.second, lowPoint.first - 1, basinCounts[index])
         }
-        return basinCounts.map { it.i }.sorted().takeLast(3).reduce {acc, basinSize -> acc * basinSize}
+        return basinCounts.map { it.i }.sorted().takeLast(3).reduce { acc, basinSize -> acc * basinSize }
     }
 
     val input = readDayInput("Day09").map { it.map { "$it".toInt() } }
@@ -57,8 +58,4 @@ fun findLowPoints(list: List<List<Int>>): MutableList<Pair<Int, Point>> {
         }
     }
     return lowPoints
-}
-
-class Counter {
-    var i = 0
 }
