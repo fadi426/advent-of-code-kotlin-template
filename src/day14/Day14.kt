@@ -5,54 +5,58 @@ import assertTrue
 import readDayInput
 
 fun main() {
-    fun task1(input: List<String>): Int {
-        val polymerTemplate = input.first()
-        val rules = input.takeLast(input.size - 2).map { it.split(" -> ") }.map { Pair(it[0], it[1]) }
-        val polymer = rec(polymerTemplate, rules, Counter(), 10)
-        val polymerFrequencies =
-            rules.map { it.second }.distinct().map { char -> Pair(char, polymer.count { it == char.single() }) }
-                .sortedBy { it.second }
 
-        return (polymerFrequencies.last().second - polymerFrequencies.first().second)
-    }
+    fun task1(input: List<String>) = findOptimalPolymer(input, 10)
+    fun task2(input: List<String>) = findOptimalPolymer(input, 40)
 
     val input = readDayInput("Day14")
-
-//    assertTrue(task1(input) == 3342)
-    println(task1(input))
+    assertTrue(task1(input) == "${3342}".toLong())
+    assertTrue(task2(input) == "${3776553567525}".toLong())
 }
 
+fun findOptimalPolymer(input: List<String>, insertionLimit: Int): Long {
+    val polymerTemplate = input.first()
+    val rules = input.takeLast(input.size - 2).map { it.split(" -> ") }.map { Rule(it[0], it[1]) }
+    polymerTemplate.windowed(2).forEach { rules.first { rule -> it == rule.name }.counter++ }
+    val finalRules = rec(rules, Counter(), insertionLimit)
 
-fun rec(polymerTemplate: String, rules: List<Pair<String, String>>, counter: Counter, limit: Int): String {
-    val rulesFound = rules.map { polymerTemplate.contains(it.first) }
-    if (!rulesFound.any { it } || counter.i > limit - 1) return polymerTemplate
-    val changes = mutableListOf<Pair<Char, Int>>()
-    rules.filterIndexed { index, _ -> rulesFound[index] }.forEach {
-        indexesOfRule(polymerTemplate, it.first).forEach { index ->
-            changes.add(Pair(it.second.single(), index + 1))
+    val letters = rules.map { it.insertion }.distinct().map { letter ->
+        Pair(letter,
+            finalRules.sumOf { rule -> rule.name.count { "$it" == letter } * rule.counter } / 2
+        )
+    }.sortedBy { it.second }
+    return calcWithOffset(polymerTemplate, letters.last()) - calcWithOffset(polymerTemplate, letters.first())
+}
+
+fun calcWithOffset(polymerTemplate: String, letter: Pair<String, Long>): Long {
+    return if (letter.first.single() == polymerTemplate.first() ||
+        letter.first.single() == polymerTemplate.last()
+    ) letter.second + 1 else letter.second
+}
+
+fun rec(rules: List<Rule>, counter: Counter, limit: Int): List<Rule> {
+    if (counter.i > limit - 1) return rules
+    val temp = rules.map { it.copy() }.toMutableList()
+    for (i in rules.indices) {
+        if (rules[i].counter > 0) {
+            temp[i].counter -= rules[i].counter
+            temp[i].outcome.forEach { insertion ->
+                temp.first { it.name == insertion }.counter += rules[i].counter
+            }
         }
     }
     counter.i++
-    return rec(fuseStrings(polymerTemplate, changes), rules, counter, limit)
+    return rec(temp, counter, limit)
 }
 
-fun fuseStrings(baseString: String, strings: List<Pair<Char, Int>>): String {
-    var s = baseString
-    val sortedStrings = strings.sortedBy { it.second }
-    for (i in sortedStrings.indices) {
-        val head = s.take(sortedStrings[i].second + i)
-        val tail = s.takeLast(s.length - i - sortedStrings[i].second)
-        s = head + sortedStrings[i].first + tail
-    }
-    return s
-}
+data class Rule(
+    val name: String,
+    val insertion: String,
+    var counter: Long = 0
+) {
+    val outcome = mutableListOf<String>()
 
-fun indexesOfRule(string: String, subString: String): List<Int> {
-    val list = mutableListOf<Int>()
-    for (i in 0 until string.length - 1) {
-        if ("${string[i]}${string[i + 1]}" == subString) {
-            list.add(i)
-        }
+    init {
+        outcome.addAll(listOf(name.first() + insertion, insertion + name.last()))
     }
-    return list
 }
