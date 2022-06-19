@@ -22,11 +22,11 @@ Right after the [@actions-user][actions-user] actor pushes the second commit to 
 From now, everything's in your hands!
 Join the [Advent of Code][aoc] contest, solve the Day O1 as soon as it is published.
 
-For the following days, copy the `day01.kt` solution file and increment the day number.
+For the following days, copy the `year2021.day01.kt` solution file and increment the day number.
 
 > Remember to join the Kotlin contest!
 > 
-> To do that, edit your project's _About_ section with ⚙️ icon and add the `aoc-2021-in-kotlin` topic to your project.
+> To do that, edit your project's _About_ section with ⚙️ icon and add the `aoc-twentyone-in-kotlin` topic to your project.
 > 
 > **We will find your repository and count you in our giveaway.** 
 
@@ -45,13 +45,13 @@ After you create a new project based on the current template repository using th
 ├── gradlew.bat             Windows Gradle Wrapper script
 ├── settings.gradle.kts     Gradle project settings
 └── src
-    ├── day01.kt            An empty implementation for the first AoC day
-    ├── day01.txt           An empty file for the Day 01 input data
+    ├── year2021.day01.kt            An empty implementation for the first AoC day
+    ├── year2021.day01.txt           An empty file for the Day 01 input data
     ├── Day01_test.txt      An optional Day 01 test input data used for checks
     └── Utils.kt            A set of utility methods shared across your days
 ```
 
-When the first puzzle appears, go to the `day01.kt` and for each `part1` and `part2` functions, provide an algorithm implementation using the `input` data loaded from the `src/day01.txt` file.
+When the first puzzle appears, go to the `year2021.day01.kt` and for each `part1` and `part2` functions, provide an algorithm implementation using the `input` data loaded from the `src/year2021.day01.txt` file.
 This input data is common for both parts, and you can find it on the bottom of each day on the [Advent of Code][aoc] page.
 
 To read the input data, you can go with the `readInput(name: String)` utility method provided in the [`Utils.kt`][file:utils] file, like:
@@ -62,7 +62,7 @@ fun main() {
         return input.size
     }
 
-    val input = readInput("day01")
+    val input = readInput("year2021.day01")
     println(part1(input))
 }
 ```
