@@ -23,7 +23,7 @@ fun main() {
         return fishDensityList.sum()
     }
 
-    val input = read2021DayInput("Day06").first().split(",").map { it.toInt() }
+    val input = read2021DayInput("Day06.txt").first().split(",").map { it.toInt() }
     fun task01() = calcLanternFishDensity(input, 80)
     fun task02() = calcLanternFishDensity(input, 256)
 
