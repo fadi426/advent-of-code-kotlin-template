@@ -1,4 +1,4 @@
-package year2020.Day05
+package year2020.day05
 
 import util.assertTrue
 import util.read2020DayInput
